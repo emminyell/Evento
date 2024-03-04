@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Aq5SklJpldZwCfAiTJRI" name="Page-1">
-        <mxGraphModel dx="839" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1930" dy="1214" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -89,7 +89,7 @@
                         <mxPoint x="160" y="232" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="27" value="" style="endArrow=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2" target="4">
+                <mxCell id="27" value="" style="endArrow=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="4">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="75" y="232" as="sourcePoint"/>
                         <mxPoint x="360" y="116.99999999999989" as="targetPoint"/>
@@ -156,7 +156,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="42" value="Evento" style="shape=umlFrame;whiteSpace=wrap;html=1;width=100;height=30;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="130" y="40" width="720" height="1380" as="geometry"/>
+                    <mxGeometry x="110" y="22" width="720" height="1380" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
                     <mxGeometry x="60" y="1192" width="30" height="60" as="geometry"/>
@@ -314,7 +314,7 @@
                         <mxPoint x="360" y="117" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="82" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                <mxCell id="82" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="6">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="70" y="530" as="sourcePoint"/>
                         <mxPoint x="360" y="250" as="targetPoint"/>
