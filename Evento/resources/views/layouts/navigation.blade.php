@@ -13,6 +13,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.0/css/boxicons.min.css">
   <script src="https://unpkg.com/boxicons@2.1.0/js/boxicons.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-0hg5w1wR6YKhFpF9i8kUilK4YEL/RvZQFGkVFzRHH2H6jIuV2cB1jHl+c5JR9MNt" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Z26S2LIzJyRq4E3YF4LIi4AtiU2+E6Tx3Oq+vu8wLgNQ8nDkONKfoNTi4yT1z5f7" crossorigin="anonymous">
 
@@ -45,6 +47,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item " href="{{ route('profile.edit') }}">Profile</a></li>
+              <li><a class="dropdown-item " href="{{ route('dashboard') }}">dashbord</a></li>
               <li>
                 <form method="POST" action="{{ route('logout') }}">
                   @csrf
