@@ -21,12 +21,12 @@ class Event extends Model
         'nb_place'
     ];
 
-    public function organizer()
+    public function user()
     {
         return $this->belongsTo(User::class, 'organizer_id');
     }
 
-    public function category()
+    public function categorie()
     {
         return $this->belongsTo(Categorie::class, 'category_id');
     }
