@@ -49,8 +49,8 @@
                                         {{$event->description}}
                                     </p>
                                     <h5 class="speaker-name">
-                                        --<a href="#">{{$event->organizer_id}}</a>
-                                        <span class="position">{{$event->category_id}}</span>
+                                        <h6 href="#">{{$event->user->name }}</h6>
+                                        <span class="position">{{$event->categorie->name}}</span>
                                     </h5>
                                 </div>
                             </div>
