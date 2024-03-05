@@ -15,6 +15,9 @@
                         {{ __("You're logged in!") }}
                     </div>
             </div>
+        </div>
+
+    </div>
               <!--schedules-sec-->
    <section class="schedule-sec w-100 float-left padding-top padding-bottom">
     <div class="container">
@@ -26,16 +29,68 @@
           </div>
 
     <!-- ======= shedule Section ======= -->
-    <div class="container event-shedule my-5 pt-4">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">
-                        Day 04
-                        <div>21 November 2020</div>
-                    </a>
-                </div>
+    <div class="container event-shedule ">
+        <div class="col-sm-2">
+            <div class="nav flex nav-pills" role="tablist" aria-orientation="vertical">
+                <a  type="button" class="nav-link" data-toggle="modal" data-target="#feedbackModal">
+                    Add Event
+                </a>
             </div>
+            <!-- Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="feedback" method="post" action="{{route}}">
+            @csrf
+          <div class="modal-header">
+            <h5 class="modal-title" id="feedbackModalLabel">Give feedback</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="feedback__header">
+              <p>What do you think of the editing tool?</p>
+            </div>
+            <div class="feedback__emo">
+              <!-- Emojis code -->
+            </div>
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="date">Date:</label>
+              <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <div class="form-group">
+              <label for="location">Location:</label>
+              <input type="text" class="form-control" id="location" name="location">
+            </div>
+            <div class="form-group">
+                <label for="location">price:</label>
+                <input type="text" class="form-control" id="price" name="price">
+              </div>
+              <div class="form-group">
+                <label for="location">place number:</label>
+                <input type="text" class="form-control" id="nb_place" name="nb_place">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-primary" value="Send">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+        </div>
+        {{-- end modal --}}
+        <div class="row">
             <div class="col-lg-8">
 
                     <div class="tab-content">
@@ -53,11 +108,14 @@
                                         <span class="position">{{$event->categorie->name}}</span>
                                     </h5>
                                 </div>
+                                <form action="{{ route('destroy', $event->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
                             </div>
                             @endforeach
-            </div>
 
-        </div>
     </div>
 
 

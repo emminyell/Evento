@@ -105,195 +105,29 @@
           </div>
 
     <!-- ======= shedule Section ======= -->
-    <div class="container event-shedule my-5 pt-4">
+    <div class="col-lg-10">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">
-                        Day 01
-                        <div>18 November 2020</div>
-                    </a>
-                    <a class="nav-link" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">
-                        Day 02
-                        <div>19 November 2020</div>
-                    </a>
-                    <a class="nav-link" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">
-                        Day 03
-                        <div>20 November 2020</div>
-                    </a>
-                    <a class="nav-link" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">
-                        Day 04
-                        <div>21 November 2020</div>
-                    </a>
+            <div class="d-flex flex-wrap" style="gap:30px; justify-content:center;">
+                @foreach ($events as $event)
+                <div class="speaker-wrap mb-3" style="width: 40%; flex: 0 0 auto;">
+                    <div class="text pl-md-5">
+                    <span class="time">{{$event->date}}</span>
+                    <h2>{{$event->title}}</h2>
+                    <p>{{$event->description}}</p>
+                    <h5 class="speaker-name">
+                        <a href="#">{{$event->user->name }}</a>
+                        <span class="position">{{$event->categorie->name}}</span>
+                    </h5>
                 </div>
             </div>
-            <div class="col-lg-8">
-
-                    <div class="tab-content">
-                        <div class="tab-pane fade active show" id="v-pills-1" role="tabpanel" aria-describedby="day-1-tab">
-                            <div class="speaker-wrap">
-                                <div class="text pl-md-5">
-                                    <span class="time">08:00AM - 10:00AM</span>
-                                    <h2>Introduction to Git and Github</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                        nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                        facilisis.
-                                    </p>
-                                    <h5 class="speaker-name">
-                                        --<a href="#">Daniel Nord</a>
-                                        <span class="position">(Founder of DezignerBay )</span>
-                                    </h5>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="speaker-wrap">
-                                <div class="text pl-md-5">
-                                    <span class="time">08:00AM - 10:00AM</span>
-                                    <h2>Introduction to Git and Github</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                        nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                        facilisis.
-                                    </p>
-                                    <h5 class="speaker-name">
-                                        --<a href="#">Daniel Nord</a>
-                                        <span class="position">(Founder of DezignerBay )</span>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-describedby="day-2-tab">
-                            <div class="speaker-wrap">
-                                <div class="text pl-md-5">
-                                    <span class="time">08:00AM - 10:00AM</span>
-                                    <h2>Introduction to Git and Github</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                        nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                        facilisis.
-                                    </p>
-                                    <h5 class="speaker-name">
-                                        --<a href="#">Daniel Nord</a>
-                                        <span class="position">(Founder of DezignerBay )</span>
-                                    </h5>
-                                </div>
-                            </div>
-
-                            <div class="speaker-wrap">
-                                <div class="text pl-md-5">
-                                    <span class="time">08:00AM - 10:00AM</span>
-                                    <h2>Introduction to Git and Github</h2>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                        nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                        facilisis.
-                                    </p>
-                                    <h5 class="speaker-name">
-                                        --<a href="#">Daniel Nord</a>
-                                        <span class="position">(Founder of DezignerBay )</span>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-                    <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-describedby="day-3-tab">
-                        <div class="speaker-wrap">
-                            <div class="text pl-md-5">
-                                <span class="time">08:00AM - 10:00AM</span>
-                                <h2>Introduction to Git and Github</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                    nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                    facilisis.
-                                </p>
-                                <h5 class="speaker-name">
-                                    --<a href="#">Daniel Nord</a>
-                                    <span class="position">(Founder of DezignerBay )</span>
-                                </h5>
-                            </div>
-                        </div>
-
-                        <div class="speaker-wrap">
-                            <div class="text pl-md-5">
-                                <span class="time">08:00AM - 10:00AM</span>
-                                <h2>Introduction to Git and Github</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                    nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                    facilisis.
-                                </p>
-                                <h5 class="speaker-name">
-                                    --<a href="#">Daniel Nord</a>
-                                    <span class="position">(Founder of DezignerBay )</span>
-                                </h5>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-                    <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-describedby="day-4-tab">
-                        <div class="speaker-wrap">
-                            <div class="text pl-md-5">
-                                <span class="time">08:00AM - 10:00AM</span>
-                                <h2>Introduction to Git and Github</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                    nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                    facilisis.
-                                </p>
-                                <h5 class="speaker-name">
-                                    --<a href="#">Daniel Nord</a>
-                                    <span class="position">(Founder of DezignerBay )</span>
-                                </h5>
-                            </div>
-                        </div>
-
-                        <div class="speaker-wrap">
-                            <div class="text pl-md-5">
-                                <span class="time">08:00AM - 10:00AM</span>
-                                <h2>Introduction to Git and Github</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Cras tempus facilisis nunc, vitae commodo nisi. Nunc sagittis
-                                    nisl tempor mi lacinia efficitur. Proin convallis a nunc at
-                                    facilisis.
-                                </p>
-                                <h5 class="speaker-name">
-                                    --<a href="#">Daniel Nord</a>
-                                    <span class="position">(Founder of DezignerBay )</span>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-            </div>
-
-        </div>
-    </div>
+                </div>
 
 
 

@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -14,8 +15,18 @@ class EventController extends Controller
      */
     public function index()
     {
-         $events = Event::all();
+        $user = Auth::user();
+
+    // Get events created by the current user
+    $events = Event::where('organizer_id', $user->id)->get();
         return view('dashboard',compact('events'));
+    }
+    public function welcome()
+    {
+
+    // Get events created by the current user
+    $events = Event::all();
+        return view('welcome',compact('events'));
     }
 
     /**
@@ -61,8 +72,11 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        $event->delete();
+
+        return redirect()->route('dashboard');
     }
 }
