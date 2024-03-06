@@ -90,6 +90,8 @@ public function update(Request $request, $id)
             'date' => $request->date,
             'location' => $request->location,
             'nb_place' => $request->nb_place,
+            'price' => $request->price,
+            'category_id' => $request->category_id,
         ]);
 
 
