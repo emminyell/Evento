@@ -36,9 +36,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{{ route('welcome') }}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('allevents') }}">Events</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
           @if (Route::has('login'))
           @auth
           <li class="nav-item dropdown">

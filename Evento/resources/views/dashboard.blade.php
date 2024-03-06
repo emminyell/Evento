@@ -105,6 +105,8 @@
                                             <th>Title</th>
                                             <th>Organizer</th>
                                             <th>Category</th>
+                                            <th>price</th>
+                                            <th>place nombre</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -115,6 +117,9 @@
                                             <td>{{ $event->title }}</td>
                                             <td>{{ $event->user->name }}</td>
                                             <td>{{ $event->categorie->name }}</td>
+                                            <td>{{ $event->price }}</td>
+                                            <td>{{ $event->localisation }}</td>
+                                            <td>{{ $event->nb_place}}</td>
                                             <td>
                                                     <form action="{{ route('destroy', $event->id) }}" method="post" style="display: inline;">
                                                         @method('DELETE')
