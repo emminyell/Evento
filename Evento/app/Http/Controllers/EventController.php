@@ -6,7 +6,10 @@ use App\Models\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use App\Models\Categorie;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -15,11 +18,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-    // Get events created by the current user
-    $events = Event::where('organizer_id', $user->id)->get();
-        return view('dashboard',compact('events'));
+        $userId = Auth::id();
+        $events = Event::where('organizer_id', $userId)->get();
+        $categories = Categorie::all();
+        return view('dashboard',compact('events','categories'));
     }
     public function welcome()
     {
@@ -40,33 +42,58 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEventRequest $request)
+    public function store(StoreEventRequest  $request)
     {
-        //
+
+        $validatedData = $request->validated();
+        $validatedData +=["organizer_id"=>auth()->user()->id];
+        Event::create($validatedData);
+
+        return redirect()->route('dashboard');
+
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Event $event)
     {
-        //
+        $events = Event::all();
+        return view('allevents',compact('events'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $event)
+    public function edit(string $id)
     {
-        //
+        $events = Event::findOrfail($id);
+
+        return view('event.editEvent',compact('events'));
     }
 
     /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateEventRequest $request, Event $event)
-    {
-        //
+
+Update the specified resource in storage.*
+@param  \App\Http\Requests\UpdateEventsRequest  $request
+@param  \App\Models\Events  $events
+@return \Illuminate\Http\Response
+*/
+public function update(Request $request, $id)
+{
+    $event = Event::findOrFail($id);
+
+        $event->update([
+           'title' => $request->title,
+           'description' => $request->description,
+            'date' => $request->date,
+            'location' => $request->location,
+            'nb_place' => $request->nb_place,
+        ]);
+
+
+        return redirect()->route('dashboard')->with('success', 'Event updated successfully.');
     }
 
     /**

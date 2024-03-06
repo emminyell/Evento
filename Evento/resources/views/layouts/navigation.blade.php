@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ninestars Bootstrap Template - Index</title>
+  <title>evento</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Google Fonts -->
@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-0hg5w1wR6YKhFpF9i8kUilK4YEL/RvZQFGkVFzRHH2H6jIuV2cB1jHl+c5JR9MNt" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Z26S2LIzJyRq4E3YF4LIi4AtiU2+E6Tx3Oq+vu8wLgNQ8nDkONKfoNTi4yT1z5f7" crossorigin="anonymous">
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-JRLPSZv9J+Ssr1izFGAHgjOCVP4g/WjffoFLkFlO6vrDSS6LQ4NEnAMryKkYYFaGC5/F9EVudv/UdhhKIzeOUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
 
@@ -36,9 +36,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{{ route('welcome') }}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('allevents') }}">Events</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
           @if (Route::has('login'))
           @auth
           <li class="nav-item dropdown">
@@ -142,14 +144,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Ninestars</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        &copy; Copyright <strong><span>Evento</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End Footer -->
