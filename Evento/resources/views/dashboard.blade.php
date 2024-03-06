@@ -177,6 +177,19 @@
                             <input type="number" class="form-control" id="nb_place" name="nb_place"
                                 value="{{ $event->nb_place }}">
                         </div>
+                        <div class="form-group">
+                            <label for="nb_place">Nombre des places :</label>
+                            <input type="number" class="form-control" id="price" name="price"
+                                value="{{ $event->price }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="category_id">Category:</label>
+                            <select class="form-control" id="category_id" name="category_id">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" name="submit" class="btn btn-primary">save</button>
                     </form>
                 </div>
