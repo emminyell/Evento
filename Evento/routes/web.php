@@ -32,6 +32,9 @@ Route::get('/auth', function () {
     Route::get('/dashboard', [EventController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/', [EventController::class, 'welcome'])->name('welcome');
     Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('destroy');
+    Route::post('/events', [EventController::class, 'store'])->name('addevent');
+    Route::put('/events{id}', [EventController::class, 'update'])->name('editevent');
+
 
 
 
