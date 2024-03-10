@@ -12,6 +12,16 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
+             @if ($errors->any())
+            <div>
+            <div>ERRORR</div>
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li style="list-style-type: none; color:red;">{{ $error }} </li>
+        @endforeach
+        </ul>
+        </div>
+        @endif
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <h1>Create Account</h1>
@@ -30,6 +40,16 @@
         </div>
 
         <div class="form-container sign-in-container">
+            @if ($errors->any())
+            <div>
+            <div>ERRORR</div>
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li style="list-style-type: none; color:red;">{{ $error }} </li>
+        @endforeach
+        </ul>
+        </div>
+        @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <h1>Sign in</h1>

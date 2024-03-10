@@ -24,7 +24,7 @@ class StoreEventRequest extends FormRequest
         return [
             'title' => 'required|string',
             'description' => 'required',
-            'date' => 'required|date',
+            'date' => 'required|date|after_or_equal:today',
             'location' => 'required',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|numeric',

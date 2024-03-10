@@ -39,7 +39,13 @@
           <li><a class="nav-link scrollto active" href="{{ route('welcome') }}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="{{ route('allevents') }}">Events</a></li>
+          <li><a class="nav-link scrollto " href="{{ route('categorie.index') }}">categorie</a></li>
+
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('showsearch') }}">search</a></li>
+
+
+
 
           @if (Route::has('login'))
           @auth
@@ -67,10 +73,9 @@
           @endif
         </ul>
       </nav><!-- .navbar -->
-
-
     </div>
   </header><!-- End Header -->
+
 @yield('content')
  <!-- ======= Footer ======= -->
  <footer id="footer">
@@ -78,13 +83,6 @@
     <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
         </div>
       </div>
     </div>
