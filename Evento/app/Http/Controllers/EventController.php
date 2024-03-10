@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Categorie;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,17 +19,62 @@ class EventController extends Controller
      */
     public function index()
     {
-        $userId = Auth::id();
+
+        if (Auth::user()->hasRole('spectator')) {
+
+            $userId = Auth::id();
         $events = Event::where('organizer_id', $userId)->get();
+        }
+        else{
+
+            $categories = Categorie::all();
+            $events = Event::with('user','categorie')->where('status','pending')->paginate(6);
+      }
+
         $categories = Categorie::all();
-        return view('dashboard',compact('events','categories'));
+        return view('dashboard', compact('events', 'categories'));
     }
+    public function showSearch() {
+        $events = Event::where('status', 'accepted')->get();
+        return view('search', compact('events'));
+    }
+    public function searchEvents(Request $request)
+{
+    $keyword = $request->input('title_s');
+
+    if ($keyword === '') {
+        // If the search keyword is empty, return all events or handle as needed
+        $events = Event::all();
+    } else {
+        // Search for events with title containing the keyword
+        $events = Event::where('title', 'like', '%' . $keyword . '%')->get();
+    }
+
+    // Pass the events data to the view
+    return view('searchComponent')->with(['events' => $events]);
+}
+
+    public function accept(Event $Event)
+    {
+        Event::where('id',$Event->id)->update(['status'=>'accepted']);
+        return redirect(route('dashboard'));
+
+
+    }
+    public function refuse(Event $Event)
+    {
+        Event::where('id',$Event->id)->update(['status'=>'refused']);
+        return redirect(route('dashboard'));
+
+
+    }
+
     public function welcome()
     {
 
-    // Get events created by the current user
-    $events = Event::all();
-        return view('welcome',compact('events'));
+        // Get events created by the current user
+        $events = Event::all();
+        return view('welcome', compact('events'));
     }
 
     /**
@@ -42,11 +88,11 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEventRequest  $request)
+    public function store(StoreEventRequest $request)
     {
 
         $validatedData = $request->validated();
-        $validatedData +=["organizer_id"=>auth()->user()->id];
+        $validatedData += ["organizer_id" => auth()->user()->id];
         Event::create($validatedData);
 
         return redirect()->route('dashboard');
@@ -59,8 +105,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $events = Event::all();
-        return view('allevents',compact('events'));
+        $events = Event::where('status', 'accepted')->paginate(6);
+        return view('allevents', compact('events'));
     }
 
     /**
@@ -70,7 +116,7 @@ class EventController extends Controller
     {
         $events = Event::findOrfail($id);
 
-        return view('event.editEvent',compact('events'));
+        return view('event.editEvent', compact('events'));
     }
 
     /**
@@ -80,13 +126,13 @@ Update the specified resource in storage.*
 @param  \App\Models\Events  $events
 @return \Illuminate\Http\Response
 */
-public function update(Request $request, $id)
-{
-    $event = Event::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
 
         $event->update([
-           'title' => $request->title,
-           'description' => $request->description,
+            'title' => $request->title,
+            'description' => $request->description,
             'date' => $request->date,
             'location' => $request->location,
             'nb_place' => $request->nb_place,
