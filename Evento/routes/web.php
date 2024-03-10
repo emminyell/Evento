@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +38,14 @@ Route::get('/auth', function () {
     Route::put('/events/{id}', [EventController::class, 'update'])->name('editevent');
 
     Route::get('/allevents', [EventController::class, 'show'])->name('allevents');
+    Route::get('search/event', [EventController::class, 'searchEvents'])->name('search');
+    Route::get('search/events', [EventController::class, 'showSearch'])->name('showsearch');
 
+    Route::get('/categorie', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('categorie');
+    Route::resource('categorie', CategorieController::class);
 
+ Route::patch('/event/accept/{event}', [EventController::class, 'accept'])->name('accept');
+Route::patch('/event/refuse/{event}', [EventController::class, 'refuse'])->name('refuse');
 
 
 require __DIR__.'/auth.php';

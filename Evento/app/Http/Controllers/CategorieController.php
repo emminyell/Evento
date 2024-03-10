@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categorie;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategorieRequest;
-use App\Http\Requests\UpdateCategorieRequest;
+use Illuminate\Http\Request;
 
 class CategorieController extends Controller
 {
@@ -14,7 +14,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $Categories = Categorie::all();
+        return view('Categorie',compact('Categories'));
     }
 
     /**
@@ -28,9 +29,19 @@ class CategorieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategorieRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'categorie' => 'required|string|max:255|unique:categories,name',
+        ], [
+            'categorie.unique' => 'The category name has already been taken.',
+        ]);
+
+        $categorie = new Categorie();
+        $categorie->name = $request->input('categorie');
+        $categorie->save();
+
+        return redirect()->route('categorie.index')->with('success', 'category add successefuly.');
     }
 
     /**
@@ -44,24 +55,38 @@ class CategorieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categorie $categorie)
+    public function edit($id)
     {
-        //
+        $Categorie = Categorie::findOrfail($id);
+
+        return view('Categorie',compact('Categorie'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategorieRequest $request, Categorie $categorie)
+    public function update(Request $request, $id)
     {
-        //
+
+        $Categorie = Categorie::findOrfail($id);
+
+        $Categorie->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect('categorie');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categorie $categorie)
+    public function destroy($id)
     {
-        //
+        $Categorie = Categorie::find($id);
+
+        $Categorie->delete();
+        return redirect('/categorie');
     }
 }

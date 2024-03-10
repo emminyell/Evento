@@ -1,5 +1,163 @@
 @extends('layouts/navigation')
-
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.6/css/boxicons.min.css' rel='stylesheet'>
+<style>
+    body {
+    height: auto;
+    background: #F4F7F8;
+    overflow: auto;
+    color: rgb(var(--color));
+    width: 100%;
+    color: #1c1a26;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+* {
+    list-style: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.con-cards {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+.con-cards:after {
+    content: '';
+    position: relative;
+    min-width: 50px;
+    height: 10px;
+    background: transparent;
+}
+.con-cards::-webkit-scrollbar {
+    height: 0px;
+}
+.card {
+    box-shadow: 0px 10px 30px 0px rgba(0,0,0,.05);
+    padding: 15px;
+    border-radius: 35px;
+    width: 260px;
+    min-width: 260px;
+    position: relative;
+    margin: 0px 15px;
+    background: #fff;
+    scroll-snap-align: center;
+    transition: all .25s ease;
+    border: 2px solid #fff;
+}
+.add-active {
+    /* transform: translate(0, -10px); */
+    box-shadow: 0px 10px 30px 0px rgba(254, 160, 26, .2);
+    border: 2px solid #fea01a;
+}
+.add-active .add {
+    display: none;
+}
+.add-active .con-image img:not(.bg) {
+    transform: scale(1.15);
+}
+.add-active .con-input-btns {
+    display: flex;
+}
+.con-star {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 30px;
+    font-size: 1.2rem;
+}
+.con-image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    border-radius: 30px;
+    background: #f5f5f5;
+}
+.con-image img {
+    width: 250px;
+    z-index: 20;
+    transition: all .25s ease;
+}
+.con-image .bg {
+    position: absolute;
+    transform: translate(10px, 30px);
+    z-index: 10;
+    filter: blur(20px);
+    opacity: .4;
+}
+.con-text {
+    width: 100%;
+    padding: 10px 0px;
+    opacity: .5;
+    font-size: .8rem;
+}
+.con-text h3 {
+    padding: 5px 0px;
+}
+.con-price {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 1.1rem;
+    padding-top: 0px;
+}
+.add {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(130deg, #FF5722 0%,#FF5722 100%);
+    border: 0px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.con-input-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.con-input-btns input {
+    padding: 10px;
+    flex: 1;
+    width: calc(100% - 100px);
+    height: 49px;
+    border: 0px;
+    border-bottom: 2px solid #f5f5f5;
+    text-align: center;
+    font-size: 1.3rem;
+}
+.con-input-btns button {
+    padding: 10px;
+    min-width: 49px;
+    height: 49px;
+    border: 0px;
+    border-radius: 20px;
+    background: linear-gradient(130deg, #fdc527 0%, #fea01a 100%);
+    color: #fff;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .25s ease;
+}
+.con-input-btns button:active {
+    transform: scale(.8);
+}
+</style>
 @section('content');
   <section id="hero" class="d-flex align-items-center">
 
@@ -104,8 +262,9 @@
                 sint occaecat cupidatat non proident.</p>
           </div>
 
+
     <!-- ======= shedule Section ======= -->
-    <div class="col-lg-10">
+    {{-- <div class="col-lg-10">
         <div class="row">
             <div class="d-flex flex-wrap" style="gap:30px; justify-content:center;">
                 @foreach ($events as $event)
@@ -127,9 +286,39 @@
                             </div>
                         </div>
                     </div>
+                </div> --}}
+
+                <div class="con-cards-1 con-cards">
+                    <!-- Première série de cartes -->
+                    <!-- Répétez ce bloc pour chaque carte -->
+                    @foreach ($events as $event)
+                    <div class="card">
+                        <div class="con-star">
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <div class="con-image">
+                            <img class="img" src="https://raw.githubusercontent.com/luisDanielRoviraContreras/img/master/files/1.png" alt="">
+                            <img class="bg" src="https://raw.githubusercontent.com/luisDanielRoviraContreras/img/master/files/1.png" alt="">
+                        </div>
+                        <div class="con-text">
+                            <h3>{{$event->title}}</h3>
+                            <p>{{$event->categorie->name}}</p>
+                        </div>
+                        <div class="con-price">{{$event->date}}</div>
+                        <div class="con-price" style="color:red;">{{$event->price}}DH</div>
+                        <div class="con-btn">
+                            <button class="add">Add to cart</button>
+                            <div class="con-input-btns">
+                                <button class="less"><i class='bx bx-minus'></i></button>
+                                <input value="1" type="text">
+                                <button class="plus"><i class='bx bx-plus'></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin du bloc de carte -->
+                    <!-- Répétez ce bloc pour chaque carte -->
+                    @endforeach
                 </div>
-
-
 
 
 
